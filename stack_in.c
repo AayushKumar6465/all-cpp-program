@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 int stack[10];
 int choice, size, top = -1, value, i, ans;
@@ -38,7 +39,7 @@ void display()
         printf("\n The elements in STACK \n");
         
 		for(i = top; i >= 0; i--)
-            printf("\n%d", stack[i]);
+            printf("%d ", stack[i]);
     }
     else
     {
@@ -60,11 +61,12 @@ int peek()
 }
 int main()
 {
-    printf("Enter the size of STACK[MAX=100] : ");
+    printf("Enter the size of STACK[MAX=10] : ");
     scanf("%d",&size);
     printf("\nSTACK OPERATIONS USING ARRAY");
     printf("\n1.PUSH \n2.POP \n3.DISPLAY \n4.PEEK \n5.EXIT");
-    do
+    //do
+    while(choice != 5)
     {
         printf("\nEnter the Choice:");
         scanf("%d", &choice);
@@ -92,7 +94,8 @@ int main()
             }
             case 5:
             {
-            	printf("\nEXIT");
+            	//printf("\nEXIT");
+				exit(0);
                 break;
 			}
             default:
@@ -101,6 +104,6 @@ int main()
             }               
         }
     }
-    while(choice != 5);
+    //while(choice != 5);
     return 0;
 }   

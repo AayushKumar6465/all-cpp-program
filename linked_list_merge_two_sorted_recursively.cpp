@@ -45,45 +45,42 @@ Node *TakeInput()
     return head;
 }
 
-/*
-Node *MergeTwoSorted(Node *l1, Node *l2)		//Iteratively 
-{
-     if(l1 == NULL)
-         return l2;
-     if(l2 == NULL)
-         return l1;
-     Node *ans = new Node(0);
-     Node *tail = ans;
+// Node *MergeTwoSorted(Node *l1, Node *l2)
+// {
+//     if(l1 == NULL)
+//         return l2;
+//     if(l2 == NULL)
+//         return l1;
+//     Node *ans = new Node(0);
+//     Node *tail = ans;
 
-     while(l1!=NULL && l2!=NULL)
-     {
-         if(l1->data <= l2->data)
-         {
-             tail->next = l1;
-             tail = l1;
-             l1 = l1->next;
-         }
-         else
-         {
-             tail->next = l2;
-             tail = l2;
-             l2 = l2->next;
-         }
-     }
-     if(l1 == NULL)
-     {
-         tail->next = l2;
-     }
-     else
-     {
-         tail->next = l1;
-     }
-     return ans->next;
- }
- */
-Node *MergeTwoSorted(Node *l1, Node *l2)		//Recursively
+//     while(l1!=NULL && l2!=NULL)
+//     {
+//         if(l1->data <= l2->data)
+//         {
+//             tail->next = l1;
+//             tail = l1;
+//             l1 = l1->next;
+//         }
+//         else
+//         {
+//             tail->next = l2;
+//             tail = l2;
+//             l2 = l2->next;
+//         }
+//     }
+//     if(l1 == NULL)
+//     {
+//         tail->next = l2;
+//     }
+//     else
+//     {
+//         tail->next = l1;
+//     }
+//     return ans->next;
+// }
+Node *merge(Node *l1, Node *l2)
 {
-     Node *result = NULL;
     if(l1 == NULL)
         return l2;
     if(l2 == NULL)
@@ -91,15 +88,18 @@ Node *MergeTwoSorted(Node *l1, Node *l2)		//Recursively
     
     if(l1->data <= l2->data)
     {
-        result = l1;
-        result->next = MergeTwoSorted(l1->next, l2);
+        l1->next = merge(l1->next, l1);
+        return l1;
     }        
     else
     {
-        result = l2;
-        result->next = MergeTwoSorted(l1, l2->next);
+        l2->next = merge(l1, l2->next);
+        return l2;
     }
-    return result;
+}
+Node *MergeTwoSorted(Node *l1, Node *l2)
+{
+    return merge(l1, l2);
 }
 int main()
 {

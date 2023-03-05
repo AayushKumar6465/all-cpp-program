@@ -1,7 +1,4 @@
-// Circular Queue implementation in C++
-
 #include <iostream>
-//#define SIZE 5 		// Size of Circular Queue
 using namespace std;
 
 class Queue 
@@ -18,11 +15,11 @@ class Queue
   	// Check if the queue is full
   	bool isFull() 
 	{
-    	if (front == 0 && rear == size - 1) 
+    	if(front == 0 && rear == size - 1) 
 		{
       		return true;
     	}
-    	if (front == rear + 1) 
+    	if(front == rear + 1) 
 		{
       		return true;
     	}
